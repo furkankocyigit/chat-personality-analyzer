@@ -1,9 +1,10 @@
 import { inject, injectable } from 'inversify';
 import { IEvaluationModel } from '../infrastructure/OpenAIEvaluationModel';
 import { REPOSITORIES } from '../config/identifiers';
+import { PersonalityEvaluation } from '../domain.model/PersonalityEvaluation';
 
 export interface IEvaluationService {
-    getEvaluationResult(): string;
+    evaluate(messageArray: string[]): PersonalityEvaluation;
 }
 
 @injectable()
@@ -14,7 +15,7 @@ export class EvaluationService implements IEvaluationService {
         this.evaluationModel = evaluationModel;
     }
 
-    getEvaluationResult(): string {
-        return this.evaluationModel.getEvaluationResult();
+    evaluate(messageArray: string[]): PersonalityEvaluation {
+        return this.evaluationModel.evaluateMessages(messageArray);
     }
 }

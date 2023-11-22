@@ -1,6 +1,6 @@
 import express from 'express';
-import { Request, Response, NextFunction } from 'express';
 import routes from './application/routes';
+import { ErrorHandlingMiddleware } from './utils/ErrorHandler';
 
 const app = express();
 
@@ -9,9 +9,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('', routes);
 
-app.use((err: Error, req: Request, res: Response, next: NextFunction): void => {
-    console.error(err.stack);
-    res.status(500).json({ message: err?.message || 'Internal Server Error' });
-});
+app.use(ErrorHandlingMiddleware);
 
 export default app;

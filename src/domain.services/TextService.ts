@@ -4,6 +4,9 @@ import { REPOSITORIES } from '../config/identifiers';
 
 export interface ITextService {
     addText(message: string): boolean;
+    getAllTexts(): string[];
+    addTextGroup(messages: string[]): boolean;
+    clearTexts(): void;
 }
 
 @injectable()
@@ -16,5 +19,17 @@ export class TextService implements ITextService {
 
     addText(message: string): boolean {
         return this.textRepository.addSingleText(message);
+    }
+
+    getAllTexts(): string[] {
+        return this.textRepository.getAllTexts();
+    }
+
+    addTextGroup(messages: string[]): boolean {
+        return this.textRepository.addMultipleTexts(messages);
+    }
+
+    clearTexts(): void {
+        this.textRepository.clearTexts();
     }
 }

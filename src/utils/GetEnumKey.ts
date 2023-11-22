@@ -1,5 +1,3 @@
-import { ErrorWithCode } from '../application/HttpStatusCodes/ErrorWithCode';
-import { HttpStatusCode } from '../application/HttpStatusCodes/StatusMessages';
 import { NegativePersonality } from '../domain.model/NegativePersonality';
 import { PositivePersonality } from '../domain.model/PositivePersonality';
 

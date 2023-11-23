@@ -115,5 +115,5 @@ dist
 *.png
 *.jpg
 
-#Gpt answers
-GptAnswers.txt
+#Gpt Notes
+*.txt

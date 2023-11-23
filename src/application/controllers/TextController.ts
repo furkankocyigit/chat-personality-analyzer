@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import { ITextService } from '../../domain.services/TextService';
 import { SERVICES } from '../../config/identifiers';
 import { inject, injectable } from 'inversify';
-import { HttpStatusCode } from '../StatusMessages';
+import { HttpStatusCode } from '../HttpStatusCodes/StatusMessages';
 export interface ITextController {
     addText(req: Request, res: Response, next: Function): void;
     getAllTexts(req: Request, res: Response, next: Function): void;

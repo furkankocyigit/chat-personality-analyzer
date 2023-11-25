@@ -2,8 +2,8 @@ import { CLIENTS } from '../config/identifiers';
 import { inject, injectable } from 'inversify';
 import OpenAI from 'openai';
 import { Personality, PersonalityEvaluation } from '../domain.model/PersonalityEvaluation';
-import { GetEnumValue } from '../utils/GetEnumKey';
-import { EvaluationFormat } from '../domain.model/EvaluationFormat';
+import { EnumHelper } from '../utils/EnumHelper';
+import { EvaluationFormat, MockEvaluationResult } from '../domain.model/EvaluationFormat';
 
 export interface IEvaluationModel {
     evaluateMessages(messages: string[]): Promise<PersonalityEvaluation>;
@@ -20,7 +20,7 @@ export class OpenAIEvaluationModel implements IEvaluationModel {
 
     async evaluateMessages(messages: string[]): Promise<PersonalityEvaluation> {
         const modelResult = await this.feedMessagesToModel(messages);
-        console.log(modelResult);
+        //const modelResult = JSON.stringify(MockEvaluationResult);  // comment previous line and uncomment this line to use mock data
 
         const parsedResult: PersonalityEvaluation = JSON.parse(modelResult);
         const personalities = this.extractPersonalities(parsedResult);
@@ -35,7 +35,7 @@ export class OpenAIEvaluationModel implements IEvaluationModel {
         let pesonalityArray: Personality[] = [];
 
         parsedResult.personalities.map((personality) => {
-            const personalityEnum = GetEnumValue(personality.personality);
+            const personalityEnum = EnumHelper.GetEnumValue(personality.personality);
             const score = personality.score;
             if (personalityEnum === undefined) return;
 

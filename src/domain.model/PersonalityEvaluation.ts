@@ -3,11 +3,11 @@ import { PositivePersonality } from './PositivePersonality';
 
 export class Personality {
     personality: PositivePersonality | NegativePersonality;
-    percentage: number;
+    score: number;
 
-    constructor(personality: PositivePersonality | NegativePersonality, percentage: number) {
+    constructor(personality: PositivePersonality | NegativePersonality, score: number) {
         this.personality = personality;
-        this.percentage = percentage;
+        this.score = score;
     }
 }
 

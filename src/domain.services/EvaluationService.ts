@@ -4,7 +4,7 @@ import { REPOSITORIES } from '../config/identifiers';
 import { PersonalityEvaluation } from '../domain.model/PersonalityEvaluation';
 
 export interface IEvaluationService {
-    evaluate(messageArray: string[]): PersonalityEvaluation;
+    evaluate(messageArray: string[]): Promise<PersonalityEvaluation>;
 }
 
 @injectable()
@@ -15,7 +15,7 @@ export class EvaluationService implements IEvaluationService {
         this.evaluationModel = evaluationModel;
     }
 
-    evaluate(messageArray: string[]): PersonalityEvaluation {
-        return this.evaluationModel.evaluateMessages(messageArray);
+    async evaluate(messageArray: string[]): Promise<PersonalityEvaluation> {
+        return await this.evaluationModel.evaluateMessages(messageArray);
     }
 }

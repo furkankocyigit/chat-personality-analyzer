@@ -33,7 +33,8 @@ export class EvaluationController implements IEvaluationController {
                     HttpStatusCode.BAD_REQUEST
                 );
             }
-            const evaluationResult = this.evaluationService.evaluate(texts);
+            const evaluationResult = await this.evaluationService.evaluate(texts);
+            res.setHeader('Content-Type', 'application/json');
             res.status(HttpStatusCode.OK).send(JSON.stringify(evaluationResult));
         } catch (err) {
             next(err);

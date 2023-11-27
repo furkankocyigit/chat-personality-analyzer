@@ -1,15 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 import { inject, injectable } from 'inversify';
-import { IEvaluationService } from '../../domain.services/EvaluationService';
-import { SERVICES } from '../../config/identifiers';
-import { StatusCode } from '../HttpStatusCodes/StatusMessages';
-import { ITextService } from '../../domain.services/TextService';
-import { ErrorWithCode } from '../HttpStatusCodes/ErrorWithCode';
-
-export interface IEvaluationController {
-    getExtendedEvaluation(req: Request, res: Response, next: NextFunction): void;
-    getSummarizedEvaluation(req: Request, res: Response, next: NextFunction): void;
-}
+import { IEvaluationService } from '../../../domain.services/EvaluationService';
+import { SERVICES } from '../../../config/identifiers';
+import { StatusCode } from '../../HttpStatusCodes/StatusMessages';
+import { ITextService } from '../../../domain.services/TextService';
+import { ErrorWithCode } from '../../HttpStatusCodes/ErrorWithCode';
+import { IEvaluationController } from './IEvaluationController';
 
 @injectable()
 export class EvaluationController implements IEvaluationController {

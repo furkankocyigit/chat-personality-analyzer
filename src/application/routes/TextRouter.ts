@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { CONTROLLERS } from '../../config/identifiers';
-import { ITextController } from '../controllers/TextController';
+import { ITextController } from '../controllers';
 import { DIcontainer } from '../../config/inversify.config';
 
 const textRouter = Router();

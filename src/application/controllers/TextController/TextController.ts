@@ -1,16 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import { ITextService } from '../../domain.services/TextService';
-import { SERVICES } from '../../config/identifiers';
+import { ITextService } from '../../../domain.services/TextService';
+import { SERVICES } from '../../../config/identifiers';
 import { inject, injectable } from 'inversify';
-import { StatusCode } from '../HttpStatusCodes/StatusMessages';
-import { ErrorWithCode } from '../HttpStatusCodes/ErrorWithCode';
-
-export interface ITextController {
-    addText(req: Request, res: Response, next: Function): void;
-    getAllTexts(req: Request, res: Response, next: Function): void;
-    addTextGroup(req: Request, res: Response, next: Function): void;
-    clearTexts(req: Request, res: Response, next: Function): void;
-}
+import { StatusCode } from '../../HttpStatusCodes/StatusMessages';
+import { ErrorWithCode } from '../../HttpStatusCodes/ErrorWithCode';
+import { ITextController } from './ITextController';
 
 @injectable()
 export class TextController implements ITextController {

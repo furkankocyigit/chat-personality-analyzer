@@ -13,4 +13,10 @@ export const CONTROLLERS = {
 
 export const CLIENTS = {
     OpenAIClient: Symbol.for('OpenAIClient'),
+    IgApiClient: Symbol.for('IgApiClient'),
+};
+
+export const CONSTANTS = {
+    IG_USERNAME: Symbol.for('IG_USERNAME'),
+    IG_PASSWORD: Symbol.for('IG_PASSWORD'),
 };

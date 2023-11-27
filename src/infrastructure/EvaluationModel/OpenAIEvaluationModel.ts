@@ -1,13 +1,9 @@
-import { CLIENTS } from '../config/identifiers';
+import { CLIENTS } from '../../config/identifiers';
 import { inject, injectable } from 'inversify';
 import OpenAI from 'openai';
-import { Personality, PersonalityEvaluation } from '../domain.model/PersonalityEvaluation';
-import { EnumHelper } from '../utils/EnumHelper';
-import { EvaluationFormat, MockEvaluationResult } from '../domain.model/EvaluationFormat';
-
-export interface IEvaluationModel {
-    evaluateMessages(messages: string[]): Promise<PersonalityEvaluation>;
-}
+import { Personality, PersonalityEvaluation, EvaluationFormat } from '../../domain.model';
+import { EnumHelper } from '../../utils/EnumHelper';
+import { IEvaluationModel } from './IEvaluationModel';
 
 @injectable()
 export class OpenAIEvaluationModel implements IEvaluationModel {

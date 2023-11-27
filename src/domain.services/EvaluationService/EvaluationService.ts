@@ -1,5 +1,5 @@
 import { inject, injectable } from 'inversify';
-import { IEvaluationModel } from '../../infrastructure/OpenAIEvaluationModel';
+import { IEvaluationModel } from '../../infrastructure';
 import { REPOSITORIES } from '../../config/identifiers';
 import { PersonalityEvaluation } from '../../domain.model';
 import { EnumHelper } from '../../utils';

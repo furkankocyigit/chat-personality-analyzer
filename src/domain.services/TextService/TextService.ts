@@ -1,5 +1,5 @@
 import { inject, injectable } from 'inversify';
-import { ITextRepository } from '../../infrastructure/MemoryTextSaver';
+import { ITextRepository } from '../../infrastructure';
 import { REPOSITORIES } from '../../config/identifiers';
 import { ITextService } from './ITextService';
 

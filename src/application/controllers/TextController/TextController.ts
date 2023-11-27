@@ -2,8 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { ITextService } from '../../../domain.services/TextService';
 import { SERVICES } from '../../../config/identifiers';
 import { inject, injectable } from 'inversify';
-import { StatusCode } from '../../HttpStatusCodes/StatusMessages';
-import { ErrorWithCode } from '../../HttpStatusCodes/ErrorWithCode';
+import { StatusCode, ErrorWithCode } from '../../../utils';
 import { ITextController } from './ITextController';
 
 @injectable()

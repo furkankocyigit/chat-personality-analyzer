@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { ErrorWithCode } from '../application/HttpStatusCodes/ErrorWithCode';
-import { StatusCode } from '../application/HttpStatusCodes/StatusMessages';
+import { ErrorWithCode, StatusCode } from '../utils';
 
 export const ErrorHandlingMiddleware = (err: ErrorWithCode, req: Request, res: Response, next: NextFunction) => {
     console.error(err.stack);

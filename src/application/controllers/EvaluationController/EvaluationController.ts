@@ -2,9 +2,8 @@ import { Request, Response, NextFunction } from 'express';
 import { inject, injectable } from 'inversify';
 import { IEvaluationService } from '../../../domain.services/EvaluationService';
 import { SERVICES } from '../../../config/identifiers';
-import { StatusCode } from '../../HttpStatusCodes/StatusMessages';
+import { StatusCode, ErrorWithCode } from '../../../utils';
 import { ITextService } from '../../../domain.services/TextService';
-import { ErrorWithCode } from '../../HttpStatusCodes/ErrorWithCode';
 import { IEvaluationController } from './IEvaluationController';
 
 @injectable()

@@ -1,9 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { inject, injectable } from 'inversify';
-import { IEvaluationService } from '../../../domain.services/EvaluationService';
+import { IEvaluationService, ITextService } from '../../../domain.services';
 import { SERVICES } from '../../../config/identifiers';
 import { StatusCode, ErrorWithCode } from '../../../utils';
-import { ITextService } from '../../../domain.services/TextService';
 import { IEvaluationController } from './IEvaluationController';
 
 @injectable()

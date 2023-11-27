@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { ITextService } from '../../../domain.services/TextService';
+import { ITextService } from '../../../domain.services';
 import { SERVICES } from '../../../config/identifiers';
 import { inject, injectable } from 'inversify';
 import { StatusCode, ErrorWithCode } from '../../../utils';

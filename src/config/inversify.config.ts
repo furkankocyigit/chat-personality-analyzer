@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import 'dotenv/config';
 import { Container } from 'inversify';
 import { CLIENTS, CONSTANTS, CONTROLLERS, REPOSITORIES, SERVICES } from './identifiers';
-import { ITextService, TextService } from '../domain.services/TextService';
+import { ITextService, TextService } from '../domain.services/TextService/TextService';
 import { ITextRepository, MemoryTextSaver } from '../infrastructure/MemoryTextSaver';
 import {
     ITextController,
@@ -13,7 +13,7 @@ import {
 import { EnvExporter } from '../utils/EnvExporter';
 import OpenAI from 'openai';
 import { IEvaluationModel, OpenAIEvaluationModel } from '../infrastructure/OpenAIEvaluationModel';
-import { EvaluationService, IEvaluationService } from '../domain.services/EvaluationService';
+import { EvaluationService, IEvaluationService } from '../domain.services/EvaluationService/EvaluationService';
 import { IgApiClient } from 'instagram-private-api';
 import { InstagramTextRepository } from '../infrastructure/InstgramTextRepository';
 

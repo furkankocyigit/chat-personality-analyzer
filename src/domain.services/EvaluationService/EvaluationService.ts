@@ -1,13 +1,9 @@
 import { inject, injectable } from 'inversify';
-import { IEvaluationModel } from '../infrastructure/OpenAIEvaluationModel';
-import { REPOSITORIES } from '../config/identifiers';
-import { PersonalityEvaluation } from '../domain.model/PersonalityEvaluation';
-import { EnumHelper } from '../utils/EnumHelper';
-
-export interface IEvaluationService {
-    extendedEvaluation(messageArray: string[]): Promise<PersonalityEvaluation>;
-    summarizedEvaluation(messageArray: string[]): Promise<PersonalityEvaluation>;
-}
+import { IEvaluationModel } from '../../infrastructure/OpenAIEvaluationModel';
+import { REPOSITORIES } from '../../config/identifiers';
+import { PersonalityEvaluation } from '../../domain.model';
+import { EnumHelper } from '../../utils';
+import { IEvaluationService } from './IEvaluationService';
 
 @injectable()
 export class EvaluationService implements IEvaluationService {

@@ -7,7 +7,7 @@ const evaluationRouter = Router();
 
 const evaluationController = DIcontainer.get<IEvaluationController>(CONTROLLERS.EvaluationController);
 
-evaluationRouter.get('/', evaluationController.getExtendedEvaluation.bind(evaluationController));
-evaluationRouter.get('/summarized', evaluationController.getSummarizedEvaluation.bind(evaluationController));
+evaluationRouter.get('/:username', evaluationController.getExtendedEvaluation.bind(evaluationController));
+evaluationRouter.get('/summarized/:username', evaluationController.getSummarizedEvaluation.bind(evaluationController));
 
 export default evaluationRouter;

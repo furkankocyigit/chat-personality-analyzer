@@ -1,14 +1,14 @@
 import { injectable } from 'inversify';
 
-export interface ITextSaver {
+export interface ITextRepository {
     addSingleText(text: string): boolean;
     addMultipleTexts(texts: string[]): boolean;
-    getAllTexts(): string[];
+    getAllTexts(username: string): string[] | Promise<string[]>;
     clearTexts(): void;
 }
 
 @injectable()
-export class MemoryTextSaver implements ITextSaver {
+export class MemoryTextSaver implements ITextRepository {
     private texts: string[];
 
     constructor() {
@@ -26,7 +26,7 @@ export class MemoryTextSaver implements ITextSaver {
         return true;
     }
 
-    getAllTexts() {
+    getAllTexts(username: string): string[] | Promise<string[]> {
         return this.texts;
     }
 

@@ -1,9 +1,10 @@
-import { Request, Response } from 'express';
-
+import { Request, Response, NextFunction } from 'express';
 import { ITextService } from '../../domain.services/TextService';
 import { SERVICES } from '../../config/identifiers';
 import { inject, injectable } from 'inversify';
-import { HttpStatusCode } from '../HttpStatusCodes/StatusMessages';
+import { StatusCode } from '../HttpStatusCodes/StatusMessages';
+import { ErrorWithCode } from '../HttpStatusCodes/ErrorWithCode';
+
 export interface ITextController {
     addText(req: Request, res: Response, next: Function): void;
     getAllTexts(req: Request, res: Response, next: Function): void;
@@ -19,34 +20,37 @@ export class TextController implements ITextController {
         this.textService = service;
     }
 
-    async addText(req: Request, res: Response, next: Function) {
+    async addText(req: Request, res: Response, next: NextFunction) {
         try {
             const message = req.body.message;
             this.textService.addText(message);
-            res.status(HttpStatusCode.OK).send({ message: 'Text added successfully' });
+            res.status(StatusCode.OK).send({ message: 'Text added successfully' });
         } catch (err) {
             next(err);
         }
     }
 
-    async getAllTexts(req: Request, res: Response, next: Function) {
+    async getAllTexts(req: Request, res: Response, next: NextFunction) {
         try {
-            const texts = this.textService.getAllTexts();
-            res.status(HttpStatusCode.OK).send({ texts });
+            const { username } = req.params;
+            if (!username) throw new ErrorWithCode('Please Provide User name to get all texts', StatusCode.BAD_REQUEST);
+
+            const texts = await this.textService.getAllTexts(username);
+            res.status(StatusCode.OK).send({ texts });
         } catch (err) {
             next(err);
         }
     }
 
     //TODO: Validation needed here. This string array manipulation should be improved.
-    async addTextGroup(req: Request, res: Response, next: Function) {
+    async addTextGroup(req: Request, res: Response, next: NextFunction) {
         try {
             const messages: string = req.body.messages;
             const formattedMessages = messages.split(',').map((message) => {
                 return message.replace(/"/g, '');
             });
             this.textService.addTextGroup(formattedMessages);
-            res.status(HttpStatusCode.OK).send({ message: 'Texts added successfully' });
+            res.status(StatusCode.OK).send({ message: 'Texts added successfully' });
         } catch (err) {
             next(err);
         }
@@ -55,7 +59,7 @@ export class TextController implements ITextController {
     async clearTexts(req: Request, res: Response, next: Function) {
         try {
             this.textService.clearTexts();
-            res.status(HttpStatusCode.OK).send({ message: 'Texts cleared successfully' });
+            res.status(StatusCode.OK).send({ message: 'Texts cleared successfully' });
         } catch (err) {
             next(err);
         }

@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { DIcontainer } from '../../../backend/src/config/inversify.config';
+import { DIcontainer } from '../../config/inversify.config';
 import { IEvaluationController } from '../controllers';
-import { CONTROLLERS } from '../../../backend/src/config/identifiers';
+import { CONTROLLERS } from '../../config/identifiers';
 
 const evaluationRouter = Router();
 

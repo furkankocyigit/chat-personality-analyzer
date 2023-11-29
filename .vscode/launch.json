@@ -8,8 +8,8 @@
             "type": "node",
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "name": "Debug",
-            "program": "${workspaceFolder}/src/main.ts",
+            "name": "Debug Backend",
+            "program": "${workspaceFolder}/backend/src/main.ts",
             "request": "launch",
             "restart": true,
             "runtimeExecutable": "nodemon",
@@ -22,9 +22,10 @@
                 "env-cmd -e dev ts-node -r tsconfig-paths/register"
             ],
             "skipFiles": ["<node_internals>/**"],
-            "preLaunchTask": "npm: build",
-            "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-            "sourceMaps": true
+            "preLaunchTask": "build:backend",
+            "outFiles": ["${workspaceFolder}/backend/dist/**/*.js"],
+            "sourceMaps": true,
+            "cwd": "${workspaceFolder}/backend"
         }
     ]
 }

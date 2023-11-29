@@ -1,6 +1,4 @@
-import { NegativePersonality } from '../domain.model/NegativePersonality';
-import { Personality } from '../domain.model/PersonalityEvaluation';
-import { PositivePersonality } from '../domain.model/PositivePersonality';
+import { NegativePersonality, PositivePersonality, Personality } from '../domain.model';
 
 export class EnumHelper {
     static GetEnumValue = (enumString: string): PositivePersonality | NegativePersonality | undefined => {

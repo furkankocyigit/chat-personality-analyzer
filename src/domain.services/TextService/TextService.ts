@@ -1,13 +1,7 @@
 import { inject, injectable } from 'inversify';
-import { ITextRepository } from '../infrastructure/MemoryTextSaver';
-import { REPOSITORIES } from '../config/identifiers';
-
-export interface ITextService {
-    addText(message: string): boolean;
-    getAllTexts(userName: string): string[] | Promise<string[]>;
-    addTextGroup(messages: string[]): boolean;
-    clearTexts(): void;
-}
+import { ITextRepository } from '../../infrastructure';
+import { REPOSITORIES } from '../../config/identifiers';
+import { ITextService } from './ITextService';
 
 @injectable()
 export class TextService implements ITextService {

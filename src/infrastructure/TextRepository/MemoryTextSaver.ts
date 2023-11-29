@@ -1,11 +1,5 @@
 import { injectable } from 'inversify';
-
-export interface ITextRepository {
-    addSingleText(text: string): boolean;
-    addMultipleTexts(texts: string[]): boolean;
-    getAllTexts(username: string): string[] | Promise<string[]>;
-    clearTexts(): void;
-}
+import { ITextRepository } from './ITextRepository';
 
 @injectable()
 export class MemoryTextSaver implements ITextRepository {

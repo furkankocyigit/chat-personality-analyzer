@@ -1,9 +1,8 @@
 import { inject, injectable } from 'inversify';
-import { ITextRepository } from './MemoryTextSaver';
-import { CLIENTS, CONSTANTS } from '../config/identifiers';
+import { ITextRepository } from './ITextRepository';
+import { CLIENTS, CONSTANTS } from '../../config/identifiers';
 import { IgApiClient } from 'instagram-private-api';
-import { ErrorWithCode } from '../application/HttpStatusCodes/ErrorWithCode';
-import { StatusCode } from '../application/HttpStatusCodes/StatusMessages';
+import { ErrorWithCode, StatusCode } from '../../utils';
 
 @injectable()
 export class InstagramTextRepository implements ITextRepository {

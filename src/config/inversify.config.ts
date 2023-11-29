@@ -2,20 +2,22 @@ import 'reflect-metadata';
 import 'dotenv/config';
 import { Container } from 'inversify';
 import { CLIENTS, CONSTANTS, CONTROLLERS, REPOSITORIES, SERVICES } from './identifiers';
-import { ITextService, TextService } from '../domain.services/TextService';
-import { ITextRepository, MemoryTextSaver } from '../infrastructure/MemoryTextSaver';
-import { ITextController, TextController } from '../application/controllers/TextController';
-import { EnvExporter } from '../utils/EnvExporter';
+import { ITextService, TextService, EvaluationService, IEvaluationService } from '../domain.services';
+import { ITextRepository, IEvaluationModel, OpenAIEvaluationModel, InstagramTextRepository } from '../infrastructure';
+import {
+    ITextController,
+    TextController,
+    EvaluationController,
+    IEvaluationController,
+} from '../application/controllers';
+import { EnvExporter } from '../utils';
 import OpenAI from 'openai';
-import { IEvaluationModel, OpenAIEvaluationModel } from '../infrastructure/OpenAIEvaluationModel';
-import { EvaluationService, IEvaluationService } from '../domain.services/EvaluationService';
-import { EvaluationController, IEvaluationController } from '../application/controllers/EvaluationController';
 import { IgApiClient } from 'instagram-private-api';
-import { InstagramTextRepository } from '../infrastructure/InstgramTextRepository';
 
 const OPENAI_API_KEY = EnvExporter.export('OPENAI_API_KEY');
 const IG_USERNAME = EnvExporter.export('IG_USERNAME');
 const IG_PASSWORD = EnvExporter.export('IG_PASSWORD');
+
 const DIcontainer = new Container();
 
 DIcontainer.bind<string>(CONSTANTS.IG_USERNAME).toConstantValue(IG_USERNAME);

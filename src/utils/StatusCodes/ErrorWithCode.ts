@@ -1,4 +1,4 @@
-import { StatusCode } from './StatusMessages';
+import { StatusCode } from './StatusCodes';
 
 export class ErrorWithCode extends Error {
     code: StatusCode;

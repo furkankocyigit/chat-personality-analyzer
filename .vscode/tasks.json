@@ -39,6 +39,46 @@
             "options": {
                 "cwd": "${workspaceFolder}/backend"
             }
+        },
+
+        {
+            "label": "build:frontend",
+            "type": "shell",
+            "command": "npm run build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$tsc"],
+            "options": {
+                "cwd": "${workspaceFolder}/chat-character-analyzer-frontend"
+            }
+        },
+        {
+            "label": "start:frontend",
+            "type": "shell",
+            "command": "npm run start",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": ["build"],
+            "options": {
+                "cwd": "${workspaceFolder}/chat-character-analyzer-frontend"
+            }
+        },
+        {
+            "label": "run-test:frontend",
+            "type": "shell",
+            "command": "npm run test",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": ["build"],
+            "options": {
+                "cwd": "${workspaceFolder}/chat-character-analyzer-frontend"
+            }
         }
     ]
 }

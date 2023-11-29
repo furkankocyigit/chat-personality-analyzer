@@ -2,34 +2,43 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "build:backend",
             "type": "shell",
             "command": "npm run build",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "problemMatcher": ["$tsc"]
+            "problemMatcher": ["$tsc"],
+            "options": {
+                "cwd": "${workspaceFolder}/backend"
+            }
         },
         {
-            "label": "start",
+            "label": "start:backend",
             "type": "shell",
             "command": "npm run start",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "dependsOn": ["build"]
+            "dependsOn": ["build"],
+            "options": {
+                "cwd": "${workspaceFolder}/backend"
+            }
         },
         {
-            "label": "run-test",
+            "label": "run-test:backend",
             "type": "shell",
             "command": "npm run test",
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "dependsOn": ["build"]
+            "dependsOn": ["build"],
+            "options": {
+                "cwd": "${workspaceFolder}/backend"
+            }
         }
     ]
 }

@@ -32,7 +32,10 @@
         // "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
         // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
         // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
-        "types": ["reflect-metadata", "node"] /* Specify type package names to be included without being referenced in a source file. */,
+        "types": [
+            "reflect-metadata",
+            "node"
+        ] /* Specify type package names to be included without being referenced in a source file. */,
         // "allowUmdGlobalAccess": true,                     /* Allow accessing UMD globals from modules. */
         // "moduleSuffixes": [],                             /* List of file name suffixes to search when resolving a module. */
         // "allowImportingTsExtensions": true,               /* Allow imports to include TypeScript file extensions. Requires '--moduleResolution bundler' and either '--noEmit' or '--emitDeclarationOnly' to be set. */
@@ -106,5 +109,27 @@
         // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
         "skipLibCheck": true /* Skip type checking all .d.ts files. */
     },
-    "include": ["src/**/*", "src/**/*.json"]
+    "include": [
+        "src/**/*",
+        "src/**/*.json",
+        "backend/src/domain.model",
+        "backend/src/application/controllers/EvaluationController",
+        "backend/src/domain.services/EvaluationService",
+        "backend/src/domain.services/TextService",
+        "backend/src/domain.services/index.ts",
+        "backend/src/infrastructure/EvaluationModel",
+        "backend/src/infrastructure/TextRepository",
+        "backend/src/infrastructure/index.ts",
+        "backend/src/config",
+        "backend/src/application/controllers/TextController",
+        "backend/src/application/routes",
+        "backend/src/application/controllers/index.ts",
+        "backend/src/utils/StatusCodes",
+        "backend/src/utils/EnumHelper.ts",
+        "backend/src/utils/EnvExporter.ts",
+        "backend/src/utils/ErrorHandler.ts",
+        "backend/src/utils/index.ts",
+        "backend/src/app.ts",
+        "backend/src/main.ts"
+    ]
 }

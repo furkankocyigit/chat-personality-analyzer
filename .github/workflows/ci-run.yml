@@ -52,15 +52,15 @@ jobs:
             # Runs a single command using the runners shell
             - name: install dependencies
               run: npm ci
-              working-directory: ./chat-character-analyzer-frontend
+              working-directory: ./frontend
 
             - name: build
               run: npm run build
-              working-directory: ./chat-character-analyzer-frontend
+              working-directory: ./frontend
 
             # Runs a set of commands using the runners shell
             - name: Run a multi-line script
               run: |
                   echo Add other actions to build,
                   echo test, and deploy your project.
-              working-directory: ./chat-character-analyzer-frontend
+              working-directory: ./frontend

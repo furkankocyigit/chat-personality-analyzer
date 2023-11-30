@@ -1,5 +1,5 @@
 {
-    "name": "chat-personality-analyzer",
+    "name": "chat-personality-analyzer-backend",
     "version": "1.0.0",
     "description": "this tool analyze stranger's personalities from their text messages",
     "main": "main.ts",

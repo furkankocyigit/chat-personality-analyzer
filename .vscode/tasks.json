@@ -51,7 +51,7 @@
             },
             "problemMatcher": ["$tsc"],
             "options": {
-                "cwd": "${workspaceFolder}/chat-character-analyzer-frontend"
+                "cwd": "${workspaceFolder}/frontend"
             }
         },
         {
@@ -64,7 +64,7 @@
             },
             "dependsOn": ["build"],
             "options": {
-                "cwd": "${workspaceFolder}/chat-character-analyzer-frontend"
+                "cwd": "${workspaceFolder}/frontend"
             }
         },
         {
@@ -77,7 +77,7 @@
             },
             "dependsOn": ["build"],
             "options": {
-                "cwd": "${workspaceFolder}/chat-character-analyzer-frontend"
+                "cwd": "${workspaceFolder}/frontend"
             }
         }
     ]

@@ -3,7 +3,13 @@ import 'dotenv/config';
 import { Container } from 'inversify';
 import { CLIENTS, CONSTANTS, CONTROLLERS, REPOSITORIES, SERVICES } from './identifiers';
 import { ITextService, TextService, EvaluationService, IEvaluationService } from '../domain.services';
-import { ITextRepository, IEvaluationModel, OpenAIEvaluationModel, InstagramTextRepository } from '../infrastructure';
+import {
+    ITextRepository,
+    IEvaluationModel,
+    OpenAIEvaluationModel,
+    InstagramTextRepository,
+    MemoryTextSaver,
+} from '../infrastructure';
 import {
     ITextController,
     TextController,
@@ -25,7 +31,7 @@ DIcontainer.bind<string>(CONSTANTS.IG_PASSWORD).toConstantValue(IG_PASSWORD);
 DIcontainer.bind<OpenAI>(CLIENTS.OpenAIClient).toConstantValue(new OpenAI({ apiKey: OPENAI_API_KEY }));
 DIcontainer.bind<IgApiClient>(CLIENTS.IgApiClient).toConstantValue(new IgApiClient());
 
-DIcontainer.bind<ITextRepository>(REPOSITORIES.MemoryTextSaver).to(InstagramTextRepository).inSingletonScope();
+DIcontainer.bind<ITextRepository>(REPOSITORIES.MemoryTextSaver).to(MemoryTextSaver).inSingletonScope();
 DIcontainer.bind<ITextService>(SERVICES.TextService).to(TextService).inSingletonScope();
 DIcontainer.bind<ITextController>(CONTROLLERS.TextController).to(TextController).inSingletonScope();
 

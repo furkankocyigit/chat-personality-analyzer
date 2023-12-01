@@ -16,7 +16,6 @@ const httpClient: IHttpClient = new AxiosClient(axiosInstance);
 
 export const HTTPClientProvider = ({ children }: PropsWithChildren) => {
     const value = { httpClient };
-    console.log('value', value);
 
     return <HttpClientContext.Provider value={value}>{children}</HttpClientContext.Provider>;
 };

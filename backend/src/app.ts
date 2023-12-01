@@ -1,25 +1,21 @@
 import express, { Request, Response, NextFunction } from 'express';
 import routes from './application/routes';
-import { ErrorHandlingMiddleware } from './application/controllers/middleware/ErrorHandler';
+import { ErrorLogger, ErrorResponder, InvalidRouteHandler } from './application/controllers/middleware/ErrorHandler';
+import { Cors } from './application/controllers/middleware/Cors';
 
 const app = express();
 
 // enable cors
-app.use((req: Request, res: Response, next: NextFunction): void => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-    res.header(
-        'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept, Authorization, x-api-key'
-    );
-    next();
-});
+app.use(Cors);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('', routes);
 
-app.use(ErrorHandlingMiddleware);
+// error handling
+app.use(ErrorLogger);
+app.use(ErrorResponder);
+app.use(InvalidRouteHandler);
 
 export default app;

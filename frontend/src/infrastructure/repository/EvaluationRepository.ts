@@ -1,6 +1,7 @@
 import { PersonalityEvaluation } from '@/domain/PersonalityEvaluation';
 import { IHttpClient } from '../httpClient/IHttpClient';
 import { plainToInstance } from 'class-transformer';
+import { BackenRoute } from '@/infrastructure/BackendRoutes/BackendRoute';
 
 export interface IEvaluationRepository {
     getEvaluationForUser(userName: string): Promise<PersonalityEvaluation>;
@@ -16,12 +17,12 @@ export class EvaluationRepository implements IEvaluationRepository {
         this.evaluationUrl = evaluationUrl;
     }
     async getEvaluationForUser(userName: string): Promise<PersonalityEvaluation> {
-        const response = this.httpClient.get(this.evaluationUrl + userName);
+        const response = this.httpClient.get(this.evaluationUrl + '/' + userName);
         const evaluation = plainToInstance(PersonalityEvaluation, response);
         return evaluation;
     }
     async getSummarizedEvaluationForUser(userName: string): Promise<PersonalityEvaluation> {
-        const response = this.httpClient.get(this.evaluationUrl + '/summarized' + userName);
+        const response = this.httpClient.get(this.evaluationUrl + BackenRoute.SUMMARIZED + '/' + userName);
         const summarizedEvaluation = plainToInstance(PersonalityEvaluation, response);
         return summarizedEvaluation;
     }

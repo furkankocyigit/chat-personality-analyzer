@@ -1,7 +1,7 @@
 import { CLIENTS } from '../../config/identifiers';
 import { inject, injectable } from 'inversify';
 import OpenAI from 'openai';
-import { Personality, PersonalityEvaluation, EvaluationFormat } from '../../domain.model';
+import { Personality, PersonalityEvaluation, EvaluationFormat, MockEvaluationResult } from '../../domain.model';
 import { EnumHelper } from '../../utils/EnumHelper';
 import { IEvaluationModel } from './IEvaluationModel';
 
@@ -15,8 +15,8 @@ export class OpenAIEvaluationModel implements IEvaluationModel {
     }
 
     async evaluateMessages(messages: string[]): Promise<PersonalityEvaluation> {
-        const modelResult = await this.feedMessagesToModel(messages);
-        //const modelResult = JSON.stringify(MockEvaluationResult);  // comment previous line and uncomment this line to use mock data
+        //const modelResult = await this.feedMessagesToModel(messages);
+        const modelResult = JSON.stringify(MockEvaluationResult); // comment previous line and uncomment this line to use mock data
 
         const parsedResult: PersonalityEvaluation = JSON.parse(modelResult);
         const personalities = this.extractPersonalities(parsedResult);

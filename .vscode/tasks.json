@@ -22,7 +22,7 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "dependsOn": ["build"],
+            "dependsOn": ["build:backend"],
             "options": {
                 "cwd": "${workspaceFolder}/backend"
             }
@@ -35,7 +35,7 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "dependsOn": ["build"],
+            "dependsOn": ["build:backend"],
             "options": {
                 "cwd": "${workspaceFolder}/backend"
             }
@@ -62,7 +62,7 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "dependsOn": ["build"],
+            "dependsOn": ["build:frontend"],
             "options": {
                 "cwd": "${workspaceFolder}/frontend"
             }
@@ -75,7 +75,7 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "dependsOn": ["build"],
+            "dependsOn": ["build:frontend"],
             "options": {
                 "cwd": "${workspaceFolder}/frontend"
             }

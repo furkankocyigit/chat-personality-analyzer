@@ -19,13 +19,11 @@ export function EvaluationBarChart({
             }}
         >
             <Typography variant="h4">Evaluation Result</Typography>
-            <Typography variant="h5">{evaluationDescription}</Typography>
             <Container>
                 <BarChart
                     xAxis={[
                         {
                             label: 'Personality',
-                            id: 'barCategories',
                             data: evaluationData.map((personality) => personality.personality),
                             scaleType: 'band',
                         },
@@ -39,6 +37,7 @@ export function EvaluationBarChart({
                     width={evaluationData.length * 50}
                     height={500}
                 />
+                <Typography variant="h5">{evaluationDescription}</Typography>
             </Container>
         </div>
     );

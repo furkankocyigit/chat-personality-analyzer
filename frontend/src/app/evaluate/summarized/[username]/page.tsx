@@ -1,7 +1,12 @@
-export default function SummarizedEvaluationRoute() {
+'use client';
+import { ContextProvider } from '@/ui/context';
+import { SummarizedResultPage } from '@/ui/pages/SummarizedResultPage';
+
+export default function SummarizedEvaluationRoute({ params }: { params: { username: string } }) {
+    const username = params.username;
     return (
-        <div>
-            <h1>Example summary component here</h1>
-        </div>
+        <ContextProvider>
+            <SummarizedResultPage username={username} />
+        </ContextProvider>
     );
 }

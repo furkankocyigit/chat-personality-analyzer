@@ -1,15 +1,15 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useEvaluationService } from '../context';
 import { PersonalityEvaluation } from '@/domain/PersonalityEvaluation';
-import { EvaluationBarChart } from '../components/EvaluationBarChart';
+import { useEvaluationService } from '../context';
+import { useCallback, useEffect, useState } from 'react';
+import { EvaluationRadarChart } from '../components/EvaluationRadarChart';
 
-export function EvaluationResult({ username }: { username: string }) {
+export function SummarizedResultPage({ username }: { username: string }) {
     const { evaluationService } = useEvaluationService();
     const [personalityEvaluation, setpersonalityEvaluation] = useState<PersonalityEvaluation>();
 
     const getEvaluation = useCallback(async () => {
         try {
-            const evaluation = await evaluationService.getEvaluationForUser(username);
+            const evaluation = await evaluationService.getSummarizedEvaluationForUser(username);
             setpersonalityEvaluation(evaluation);
         } catch (err) {
             console.log(err);
@@ -26,12 +26,11 @@ export function EvaluationResult({ username }: { username: string }) {
             score: personality.score,
         };
     });
-
     if (!evaluationData || !personalityEvaluation?.evaluationDescriptions) {
         return <div> No evaluation found </div>;
     }
     return (
-        <EvaluationBarChart
+        <EvaluationRadarChart
             evaluationData={evaluationData}
             evaluationDescription={personalityEvaluation?.evaluationDescriptions}
         />

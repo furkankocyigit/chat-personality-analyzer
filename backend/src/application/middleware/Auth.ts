@@ -6,7 +6,8 @@ const AccesToken = EnvExporter.export('ACCESS_TOKEN');
 
 export const Auth = (req: Request, res: Response, next: NextFunction): void => {
     try {
-        const token = validateTokenHeader(req);
+        const bearerToken = req.headers.authorization;
+        const token = validateBearerToken(bearerToken);
 
         jwt.verify(token, AccesToken, (err, user) => {
             if (err) {
@@ -20,15 +21,13 @@ export const Auth = (req: Request, res: Response, next: NextFunction): void => {
     }
 };
 
-function validateTokenHeader(req: Request) {
-    const bearerToken = req.headers.authorization;
-
+function validateBearerToken(bearerToken: string | undefined): string {
     if (!bearerToken) throw new ErrorWithCode('No token provided', StatusCode.UNAUTHORIZED);
 
     if (!bearerToken.startsWith('Bearer ')) throw new ErrorWithCode('Invalid token', StatusCode.UNAUTHORIZED);
 
     const split = bearerToken.split('Bearer ');
-    if (split.length !== 2) throw new ErrorWithCode('unrecognized token format', StatusCode.UNAUTHORIZED);
+    if (split.length !== 2) throw new ErrorWithCode('Unrecognized token format', StatusCode.UNAUTHORIZED);
 
     const token = split[1];
 

@@ -1,8 +1,18 @@
 import 'reflect-metadata';
 import 'dotenv/config';
 import { Container } from 'inversify';
+import OpenAI from 'openai';
+import { IgApiClient } from 'instagram-private-api';
+
 import { CLIENTS, CONSTANTS, CONTROLLERS, REPOSITORIES, SERVICES } from './identifiers';
-import { ITextService, TextService, EvaluationService, IEvaluationService } from '../domain.services';
+import {
+    ITextService,
+    TextService,
+    EvaluationService,
+    IEvaluationService,
+    IAuthenticationService,
+    AuthenticationServiceInstgram,
+} from '../domain.services';
 import {
     ITextRepository,
     IEvaluationModel,
@@ -15,14 +25,10 @@ import {
     TextController,
     EvaluationController,
     IEvaluationController,
+    IAuthenticationController,
+    AuthenticationController,
 } from '../application/controllers';
 import { EnvExporter } from '../utils';
-import OpenAI from 'openai';
-import { IgApiClient } from 'instagram-private-api';
-import { IAuthenticationService } from '../domain.services/AuthenticationService/IAuthenticationService';
-import { AuthenticationServiceInstgram } from '../domain.services/AuthenticationService/AuthenticationServiceInstgram';
-import { IAuthenticationController } from '../application/controllers/AuthenticationController/IAuthenticationController';
-import { AuthenticationController } from '../application/controllers/AuthenticationController/AuthenticationController';
 
 const OPENAI_API_KEY = EnvExporter.export('OPENAI_API_KEY');
 const IG_USERNAME = EnvExporter.export('IG_USERNAME');

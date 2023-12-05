@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { IAuthenticationController } from '../controllers/AuthenticationController/IAuthenticationController';
+import { IAuthenticationController } from '../controllers';
 import { CONTROLLERS } from '../../config/identifiers';
 import { DIcontainer } from '../../config/inversify.config';
 

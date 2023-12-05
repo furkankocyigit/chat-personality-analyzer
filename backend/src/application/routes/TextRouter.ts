@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { CONTROLLERS } from '../../config/identifiers';
 import { ITextController } from '../controllers';
 import { DIcontainer } from '../../config/inversify.config';
-import { Auth } from '../middleware/Auth';
+import { Auth } from '../middleware';
 
 const textRouter = Router();
 

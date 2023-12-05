@@ -1,5 +1,4 @@
-import { AuthenticationOptions } from '../../domain.model/authentication/AuthenticationOptions';
-import { UserSession } from '../../domain.model/authentication/UserSession';
+import { AuthenticationOptions, UserSession } from '../../domain.model';
 
 export interface IAuthenticationService {
     authenticate(options: AuthenticationOptions): Promise<UserSession>;

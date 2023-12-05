@@ -1,6 +1,5 @@
 import { IgApiClient } from 'instagram-private-api';
-import { AuthenticationOptions } from '../../domain.model/authentication/AuthenticationOptions';
-import { UserSession } from '../../domain.model/authentication/UserSession';
+import { AuthenticationOptions, UserSession } from '../../domain.model';
 import { IAuthenticationService } from './IAuthenticationService';
 import { inject, injectable } from 'inversify';
 import { CLIENTS } from '../../config/identifiers';

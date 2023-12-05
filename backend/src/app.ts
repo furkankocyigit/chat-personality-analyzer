@@ -1,7 +1,6 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
 import routes from './application/routes';
-import { ErrorLogger, ErrorResponder, InvalidRouteHandler } from './application/middleware/ErrorHandler';
-import { Cors } from './application/middleware/Cors';
+import { ErrorLogger, ErrorResponder, InvalidRouteHandler, Cors } from './application/middleware';
 
 const app = express();
 

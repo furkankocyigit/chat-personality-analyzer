@@ -3,8 +3,8 @@ import { IAuthenticationController } from './IAuthenticationController';
 import { ErrorWithCode, StatusCode } from '../../../utils';
 import { inject, injectable } from 'inversify';
 import { SERVICES } from '../../../config/identifiers';
-import { IAuthenticationService } from '../../../domain.services/AuthenticationService/IAuthenticationService';
-import { AuthenticationOptions } from '../../../domain.model/authentication/AuthenticationOptions';
+import { IAuthenticationService } from '../../../domain.services';
+import { AuthenticationOptions } from '../../../domain.model';
 
 @injectable()
 export class AuthenticationController implements IAuthenticationController {

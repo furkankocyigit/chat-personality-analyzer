@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { DIcontainer } from '../../config/inversify.config';
 import { IEvaluationController } from '../controllers';
 import { CONTROLLERS } from '../../config/identifiers';
-import { Auth } from '../middleware/Auth';
+import { Auth } from '../middleware';
 
 const evaluationRouter = Router();
 

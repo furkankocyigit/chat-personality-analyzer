@@ -19,6 +19,10 @@ import {
 import { EnvExporter } from '../utils';
 import OpenAI from 'openai';
 import { IgApiClient } from 'instagram-private-api';
+import { IAuthenticationService } from '../domain.services/AuthenticationService/IAuthenticationService';
+import { AuthenticationServiceInstgram } from '../domain.services/AuthenticationService/AuthenticationServiceInstgram';
+import { IAuthenticationController } from '../application/controllers/AuthenticationController/IAuthenticationController';
+import { AuthenticationController } from '../application/controllers/AuthenticationController/AuthenticationController';
 
 const OPENAI_API_KEY = EnvExporter.export('OPENAI_API_KEY');
 const IG_USERNAME = EnvExporter.export('IG_USERNAME');
@@ -39,4 +43,6 @@ DIcontainer.bind<IEvaluationModel>(REPOSITORIES.OpenAIEvaluationModel).to(OpenAI
 DIcontainer.bind<IEvaluationService>(SERVICES.EvaluationService).to(EvaluationService).inSingletonScope();
 DIcontainer.bind<IEvaluationController>(CONTROLLERS.EvaluationController).to(EvaluationController).inSingletonScope();
 
+DIcontainer.bind<IAuthenticationService>(SERVICES.AuthenticationService).to(AuthenticationServiceInstgram);
+DIcontainer.bind<IAuthenticationController>(CONTROLLERS.AuthenticationController).to(AuthenticationController);
 export { DIcontainer };

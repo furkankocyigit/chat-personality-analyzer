@@ -5,10 +5,12 @@ export const REPOSITORIES = {
 export const SERVICES = {
     TextService: Symbol.for('TextService'),
     EvaluationService: Symbol.for('EvaluationService'),
+    AuthenticationService: Symbol.for('AuthenticationService'),
 };
 export const CONTROLLERS = {
     TextController: Symbol.for('TextController'),
     EvaluationController: Symbol.for('EvaluationController'),
+    AuthenticationController: Symbol.for('AuthenticationController'),
 };
 
 export const CLIENTS = {

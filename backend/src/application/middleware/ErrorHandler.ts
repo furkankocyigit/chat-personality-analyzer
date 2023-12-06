@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { ErrorWithCode, StatusCode } from '../../../utils';
+import { ErrorWithCode, StatusCode } from '../../utils';
 
 export const ErrorLogger = (err: Error, req: Request, res: Response, next: NextFunction) => {
     console.error(err.stack);

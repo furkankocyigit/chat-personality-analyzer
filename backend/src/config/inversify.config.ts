@@ -1,8 +1,18 @@
 import 'reflect-metadata';
 import 'dotenv/config';
 import { Container } from 'inversify';
+import OpenAI from 'openai';
+import { IgApiClient } from 'instagram-private-api';
+
 import { CLIENTS, CONSTANTS, CONTROLLERS, REPOSITORIES, SERVICES } from './identifiers';
-import { ITextService, TextService, EvaluationService, IEvaluationService } from '../domain.services';
+import {
+    ITextService,
+    TextService,
+    EvaluationService,
+    IEvaluationService,
+    IAuthenticationService,
+    AuthenticationServiceInstgram,
+} from '../domain.services';
 import {
     ITextRepository,
     IEvaluationModel,
@@ -15,10 +25,10 @@ import {
     TextController,
     EvaluationController,
     IEvaluationController,
+    IAuthenticationController,
+    AuthenticationController,
 } from '../application/controllers';
 import { EnvExporter } from '../utils';
-import OpenAI from 'openai';
-import { IgApiClient } from 'instagram-private-api';
 
 const OPENAI_API_KEY = EnvExporter.export('OPENAI_API_KEY');
 const IG_USERNAME = EnvExporter.export('IG_USERNAME');
@@ -39,4 +49,6 @@ DIcontainer.bind<IEvaluationModel>(REPOSITORIES.OpenAIEvaluationModel).to(OpenAI
 DIcontainer.bind<IEvaluationService>(SERVICES.EvaluationService).to(EvaluationService).inSingletonScope();
 DIcontainer.bind<IEvaluationController>(CONTROLLERS.EvaluationController).to(EvaluationController).inSingletonScope();
 
+DIcontainer.bind<IAuthenticationService>(SERVICES.AuthenticationService).to(AuthenticationServiceInstgram);
+DIcontainer.bind<IAuthenticationController>(CONTROLLERS.AuthenticationController).to(AuthenticationController);
 export { DIcontainer };

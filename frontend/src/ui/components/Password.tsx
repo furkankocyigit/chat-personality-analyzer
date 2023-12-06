@@ -13,6 +13,7 @@ export function Password({ password, setPassword }: { password: string; setPassw
             type={showPassword ? 'text' : 'password'}
             onChange={(e) => setPassword(e.target.value)}
             InputLabelProps={{ shrink: true }}
+            autoComplete="current-password"
             InputProps={{
                 endAdornment: (
                     <InputAdornment position="end">

@@ -12,12 +12,12 @@ export class AuthenticationController implements IAuthenticationController {
 
     async login(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
-            const { username, password } = req.body;
-            if (!username || !password) {
+            const { userName, password } = req.body;
+            if (!userName || !password) {
                 throw new ErrorWithCode('Please provide username and password', StatusCode.BAD_REQUEST);
             }
             const loginParams: AuthenticationOptions = {
-                userName: username,
+                userName: userName,
                 password: password,
             };
 

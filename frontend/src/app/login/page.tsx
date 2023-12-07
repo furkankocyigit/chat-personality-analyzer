@@ -1,12 +1,12 @@
 'use client';
+import { ContextProvider } from '@/ui/context';
 import { Login } from '@/ui/pages/Login';
-import { Backdrop, Box, CircularProgress, Container } from '@mui/material';
-import { blue } from '@mui/material/colors';
+import { Container } from '@mui/material';
 import Image from 'next/image';
 
 export default function LoginPage() {
     return (
-        <div>
+        <ContextProvider>
             <Container
                 sx={{
                     minHeight: '60vh',
@@ -25,21 +25,8 @@ export default function LoginPage() {
                     priority
                 />
                 <br />
-                <Box sx={{ width: '50%' }}>
-                    <Login />
-                </Box>
+                <Login />
             </Container>
-
-            {/*will be implemented when authentication is implemented*/}
-            <Backdrop open={false}>
-                <CircularProgress
-                    sx={{
-                        color: blue,
-                        marginLeft: '50%',
-                        marginRight: '50%',
-                    }}
-                />
-            </Backdrop>
-        </div>
+        </ContextProvider>
     );
 }

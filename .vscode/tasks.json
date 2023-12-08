@@ -68,6 +68,18 @@
             }
         },
         {
+            "label": "start:frontend:dev",
+            "type": "shell",
+            "command": "npm run dev",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/frontend"
+            }
+        },
+        {
             "label": "run-test:frontend",
             "type": "shell",
             "command": "npm run test",

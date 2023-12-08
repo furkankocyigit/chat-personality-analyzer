@@ -20,15 +20,22 @@ export function SummarizedResultPage({ username }: { username: string }) {
         getEvaluation();
     }, [getEvaluation]);
 
-    const evaluationData = personalityEvaluation?.personalities.map((personality) => {
-        return {
-            personality: personality.personality,
-            score: personality.score,
-        };
-    });
-    if (!evaluationData || !personalityEvaluation?.evaluationDescriptions) {
-        return <div> No evaluation found </div>;
+    if (personalityEvaluation === undefined) {
+        return <div>Loading...</div>; // Display a loading indicator while fetching data
     }
+
+    if (
+        !personalityEvaluation ||
+        !personalityEvaluation.personalities ||
+        !personalityEvaluation.evaluationDescriptions
+    ) {
+        return <div>No evaluation found</div>;
+    }
+
+    const evaluationData = personalityEvaluation.personalities.map((personality) => ({
+        personality: personality.personality,
+        score: personality.score,
+    }));
     return (
         <EvaluationRadarChart
             evaluationData={evaluationData}

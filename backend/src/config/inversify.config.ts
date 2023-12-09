@@ -51,4 +51,8 @@ DIcontainer.bind<IEvaluationController>(CONTROLLERS.EvaluationController).to(Eva
 
 DIcontainer.bind<IAuthenticationService>(SERVICES.AuthenticationService).to(AuthenticationServiceInstgram);
 DIcontainer.bind<IAuthenticationController>(CONTROLLERS.AuthenticationController).to(AuthenticationController);
+
+DIcontainer.bind<IUserRepository>(REPOSITORIES.UserRepository).to(UserRepositoryInstagram);
+DIcontainer.bind<IUserService>(SERVICES.UserService).to(UserService);
+DIcontainer.bind<IUserController>(CONTROLLERS.UserController).to(UserController);
 export { DIcontainer };

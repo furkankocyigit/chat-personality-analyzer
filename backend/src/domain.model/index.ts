@@ -5,3 +5,4 @@ export { PositivePersonality } from './personality/PositivePersonality';
 export { Personality } from './personality/Personality';
 export { AuthenticationOptions } from './authentication/AuthenticationOptions';
 export { UserSession } from './authentication/UserSession';
+export { User } from './User/User';

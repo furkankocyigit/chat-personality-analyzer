@@ -2,6 +2,7 @@ import { Router } from 'express';
 import textRouter from './TextRouter';
 import evaluationRouter from './EvaluationRouter';
 import authentiacationRouter from './AuthenticationRoter';
+import userRouter from './UserRoute';
 
 const router = Router();
 
@@ -17,6 +18,10 @@ const defaultRoutes = [
     {
         path: '/evaluate',
         route: evaluationRouter,
+    },
+    {
+        path: '/users',
+        route: userRouter,
     },
 ];
 

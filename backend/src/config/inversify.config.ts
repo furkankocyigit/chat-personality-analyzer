@@ -27,8 +27,14 @@ import {
     IEvaluationController,
     IAuthenticationController,
     AuthenticationController,
+    IUserController,
+    UserController,
 } from '../application/controllers';
 import { EnvExporter } from '../utils';
+import { IUserRepository } from '../infrastructure/UserRepository/IUserRepository';
+import { UserRepositoryInstagram } from '../infrastructure/UserRepository/UserRepositoryInstgram';
+import { IUserService } from '../domain.services/UserService/IUserService';
+import { UserService } from '../domain.services/UserService/UserService';
 
 const OPENAI_API_KEY = EnvExporter.export('OPENAI_API_KEY');
 const IG_USERNAME = EnvExporter.export('IG_USERNAME');
@@ -41,7 +47,7 @@ DIcontainer.bind<string>(CONSTANTS.IG_PASSWORD).toConstantValue(IG_PASSWORD);
 DIcontainer.bind<OpenAI>(CLIENTS.OpenAIClient).toConstantValue(new OpenAI({ apiKey: OPENAI_API_KEY }));
 DIcontainer.bind<IgApiClient>(CLIENTS.IgApiClient).toConstantValue(new IgApiClient());
 
-DIcontainer.bind<ITextRepository>(REPOSITORIES.MemoryTextSaver).to(MemoryTextSaver).inSingletonScope();
+DIcontainer.bind<ITextRepository>(REPOSITORIES.MemoryTextSaver).to(InstagramTextRepository).inSingletonScope();
 DIcontainer.bind<ITextService>(SERVICES.TextService).to(TextService).inSingletonScope();
 DIcontainer.bind<ITextController>(CONTROLLERS.TextController).to(TextController).inSingletonScope();
 

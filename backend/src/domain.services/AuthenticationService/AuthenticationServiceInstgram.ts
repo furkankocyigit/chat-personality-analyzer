@@ -36,11 +36,12 @@ export class AuthenticationServiceInstgram implements IAuthenticationService {
 
     private async login(igUserName: string, igPassword: string) {
         try {
-            // this.ig.state.generateDevice(igUserName);
-            // return await this.ig.account.login(igUserName, igPassword);
-            // sleep for 3 seconds
-            await sleep(3000);
-            return { pk: 1, username: 'test' };
+            this.ig.simulate.preLoginFlow();
+            this.ig.state.generateDevice(igUserName);
+            return await this.ig.account.login(igUserName, igPassword);
+            // // sleep for 3 seconds
+            // await sleep(3000);
+            // return { pk: 1, username: 'test' };
         } catch (err: any) {
             throw new ErrorWithCode(
                 `user '${igUserName}' could not be authenticated.${err.message}`,

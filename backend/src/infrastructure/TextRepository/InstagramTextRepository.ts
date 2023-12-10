@@ -1,32 +1,17 @@
 import { inject, injectable } from 'inversify';
 import { ITextRepository } from './ITextRepository';
-import { CLIENTS, CONSTANTS } from '../../config/identifiers';
+import { CLIENTS } from '../../config/identifiers';
 import { IgApiClient } from 'instagram-private-api';
 import { ErrorWithCode, StatusCode } from '../../utils';
 
 @injectable()
 export class InstagramTextRepository implements ITextRepository {
     private ig: IgApiClient;
-    private igUserName: string;
-    private igPassword: string;
-    constructor(
-        @inject(CLIENTS.IgApiClient) ig: IgApiClient,
-        @inject(CONSTANTS.IG_USERNAME) igUserName: string,
-        @inject(CONSTANTS.IG_PASSWORD) igPassword: string
-    ) {
+    constructor(@inject(CLIENTS.IgApiClient) ig: IgApiClient) {
         this.ig = ig;
-        this.igUserName = igUserName;
-        this.igPassword = igPassword;
-    }
-
-    async login(igUserName: string, igPassword: string) {
-        this.ig.state.generateDevice(igUserName);
-        await this.ig.account.login(igUserName, igPassword);
     }
 
     async getAllTexts(userName: string): Promise<string[]> {
-        await this.login(this.igUserName, this.igPassword);
-
         const userId = await this.ig.user.getIdByUsername(userName);
         const threadID = await this.getUserMessageThreadID(userName);
 

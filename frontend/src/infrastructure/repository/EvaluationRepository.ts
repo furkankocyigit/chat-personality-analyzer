@@ -1,7 +1,7 @@
 import { PersonalityEvaluation } from '@/domain/PersonalityEvaluation';
 import { IHttpClient } from '../httpClient/IHttpClient';
 import { plainToInstance } from 'class-transformer';
-import { BackendRoute } from '@/infrastructure/BackendRoutes/BackendRoute';
+import { BackendRoute } from '@/utils/BackendRoute';
 
 export interface IEvaluationRepository {
     getEvaluationForUser(userName: string): Promise<PersonalityEvaluation>;

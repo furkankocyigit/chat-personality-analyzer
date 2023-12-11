@@ -6,7 +6,7 @@ import {
     IAuthenticationRepository,
 } from '@/infrastructure/repository/AuthenticationRepository';
 import { BACKEND_HOST } from '@/utils/constants';
-import { BackendRoute } from '@/infrastructure/BackendRoutes/BackendRoute';
+import { BackendRoute } from '@/utils/BackendRoute';
 
 export interface IAuthenticationServiceContext {
     authenticationService: IAuthenticationService;

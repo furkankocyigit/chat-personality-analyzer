@@ -3,12 +3,14 @@ import { LoadingButton } from '@mui/lab';
 import { useState } from 'react';
 import { Password } from '../components/Password';
 import { useAuthenticationService } from '../context/AuthenticationServiceContext';
+import { useRouter } from 'next/navigation';
 
 export function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const { authenticationService } = useAuthenticationService();
+    const router = useRouter();
 
     const handleLogin = async (e: any) => {
         e.preventDefault();
@@ -21,6 +23,7 @@ export function Login() {
             const session = await authenticationService.login(username, password);
             setLoading(false);
             localStorage.setItem('token', session.accessToken);
+            router.push(`/`);
         } catch (err) {
             console.log(err);
             setLoading(false);

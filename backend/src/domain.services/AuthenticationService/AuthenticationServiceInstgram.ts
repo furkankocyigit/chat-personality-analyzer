@@ -36,7 +36,6 @@ export class AuthenticationServiceInstgram implements IAuthenticationService {
 
     private async login(igUserName: string, igPassword: string) {
         try {
-            this.ig.simulate.preLoginFlow();
             this.ig.state.generateDevice(igUserName);
             return await this.ig.account.login(igUserName, igPassword);
             // // sleep for 3 seconds

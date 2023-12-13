@@ -4,4 +4,5 @@ export enum BackendRoute {
     EVALUATE = '/evaluate',
     SUMMARIZED = '/summarized',
     TEXT = '/text',
+    USERS = '/users',
 }

@@ -1,4 +1,4 @@
-import { BackendRoute } from '../BackendRoutes/BackendRoute';
+import { BackendRoute } from '../../utils/BackendRoute';
 import { IHttpClient } from './IHttpClient';
 import { AxiosInstance } from 'axios';
 
@@ -7,6 +7,12 @@ export class AxiosClient implements IHttpClient {
 
     constructor(axios: AxiosInstance) {
         this.axios = axios;
+    }
+    async getAll(url: string): Promise<unknown[]> {
+        const headers = this.getHeaderWithToken();
+        const response = await this.axios.get(url, { headers });
+
+        return response.data as unknown[];
     }
 
     async get(url: string): Promise<unknown> {

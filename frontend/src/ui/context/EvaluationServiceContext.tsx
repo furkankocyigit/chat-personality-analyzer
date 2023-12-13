@@ -3,7 +3,7 @@ import { EvaluationService, IEvaluationService } from '../../services/Evaluation
 import { useHttpClient } from './HttpClientContext';
 import { EvaluationRepository, IEvaluationRepository } from '@/infrastructure/repository/EvaluationRepository';
 import { BACKEND_HOST } from '@/utils/constants';
-import { BackendRoute } from '@/infrastructure/BackendRoutes/BackendRoute';
+import { BackendRoute } from '@/utils/BackendRoute';
 
 export interface IEvaluationServiceContext {
     evaluationService: IEvaluationService;

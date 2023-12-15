@@ -8,9 +8,9 @@ import axios from 'axios';
 
 //jsut for testing
 const mockUsers = [
-    new User(1, 'test1', 'test1', 'test1'),
-    new User(2, 'test2', 'test2', 'test2'),
-    new User(3, 'test3', 'test3', 'test3'),
+    new User(1, 'name1', 'user name 1', 'pic1'),
+    new User(2, 'name2', 'user name 2', 'pic2'),
+    new User(3, 'name3', 'user name 3', 'pic3'),
 ];
 @injectable()
 export class UserRepositoryInstagram implements IUserRepository {

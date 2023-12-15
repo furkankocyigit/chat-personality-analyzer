@@ -2,6 +2,7 @@ import { PersonalityEvaluation } from '@/domain/PersonalityEvaluation';
 import { useEvaluationService } from '../context';
 import { useCallback, useEffect, useState } from 'react';
 import { EvaluationRadarChart } from '../components/EvaluationRadarChart';
+import { CircularProgress } from '@mui/material';
 
 export function SummarizedResultPage({ username }: { username: string }) {
     const { evaluationService } = useEvaluationService();
@@ -21,7 +22,12 @@ export function SummarizedResultPage({ username }: { username: string }) {
     }, [getEvaluation]);
 
     if (personalityEvaluation === undefined) {
-        return <div>Loading...</div>; // Display a loading indicator while fetching data
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                Evaluation Loading...
+                <CircularProgress />
+            </div>
+        ); // Display a loading indicator while fetching data
     }
 
     if (

@@ -1,9 +1,19 @@
 import { User } from '@/domain/User/User';
 import { LoadingButton } from '@mui/lab';
 import { Card, Grid, CardContent, CardHeader, Typography, CardMedia } from '@mui/material';
+import { useRouter } from 'next/navigation';
 
 function UserProfile({ user }: { user: User }) {
-    console.log('user in card: ', user);
+    const router = useRouter();
+    const handleExtendedEvaluation = async (e: any) => {
+        e.preventDefault();
+
+        router.push(`/evaluate?username=${user.username}`);
+    };
+    const handleSummarizedEvaluation = () => {
+        console.log('summarized evaluation');
+        router.push(`/evaluate/summarized?username=${user.username}`);
+    };
     return (
         <Grid
             container
@@ -30,7 +40,7 @@ function UserProfile({ user }: { user: User }) {
                 sm={8}
                 md={6}
             >
-                <Typography variant="h5">{user.id}</Typography>
+                <Typography variant="h5">{user.username}</Typography>
             </Grid>
             <Grid
                 item
@@ -43,7 +53,7 @@ function UserProfile({ user }: { user: User }) {
                     variant="contained"
                     color="primary"
                     size="small"
-                    onClick={() => {}}
+                    onClick={handleExtendedEvaluation}
                     sx={{ marginBottom: 1 }}
                 >
                     Extended Evaluation
@@ -52,7 +62,7 @@ function UserProfile({ user }: { user: User }) {
                     variant="contained"
                     color="primary"
                     size="small"
-                    onClick={() => {}}
+                    onClick={handleSummarizedEvaluation}
                 >
                     Summarized Evaluation
                 </LoadingButton>
@@ -64,10 +74,6 @@ function UserProfile({ user }: { user: User }) {
 export function UserCard({ user }: { user: User }) {
     return (
         <Card sx={{ width: '100%' }}>
-            <CardHeader
-                title={user.username}
-                sx={{ textAlign: 'center' }}
-            />
             <CardContent>
                 <UserProfile user={user} />
             </CardContent>

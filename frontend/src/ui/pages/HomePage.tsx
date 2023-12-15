@@ -31,11 +31,17 @@ export function HomePage() {
                 alignItems: 'center',
             }}
         >
-            {users.map((user) => (
-                <UserCard
+            {users.map((user, index) => (
+                <div
                     key={user.id}
-                    user={user}
-                />
+                    style={{ display: 'contents' }}
+                >
+                    <UserCard
+                        key={user.id}
+                        user={user}
+                    />
+                    {index !== users.length - 1 && <br />}
+                </div>
             ))}
         </Container>
     );
